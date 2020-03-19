@@ -2,6 +2,10 @@ export const environment = {
   production: true,
   regions: {
     'US': {
+      'March 17, 2020': {
+        reportedConfirmedCases: 6411,
+        reportedFatalities: 109
+      },
       'March 16, 2020': {
         reportedConfirmedCases: 4663,
         reportedFatalities: 86

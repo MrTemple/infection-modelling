@@ -4,14 +4,14 @@
   </div>
 
   <div class="flex-container">
-    <p>Estimated number of infected in {{ region }}</p>
+    <p>Estimated number of infected in {{ region }} per {{ regions[this.region][this.date].reportedConfirmedCases  | number:'.0'  }} Cases Confirmed on {{ date }}.</p>
   </div>
 
   <div class="spacer"></div>
 
   <div class="flex-container">
     <button mat-raised-button color="accent"
-    (click)="scrollTo(rationale)">
+    (click)="scrollTo(inlinerationale)">
       See Rationale
     </button>
     <div class="horizontal-spacer"></div>
@@ -108,17 +108,17 @@
   </div>
 </div>
 
-<div class="Home-body">
+<div #inlinerationale class="Home-body">
   <mat-list class="Home-list">
     <ng-container *ngFor="let contentItem of tiles; let i = index">
       <mat-list-item [class.pointer]="!!contentItem.description"
       (click)="!!contentItem.description ? open[i] = !open[i] : ''">
         <div class="Home-listHeader" mat-line>
-          {{ contentItem.header }}<span *ngIf="!!contentItem.description">*</span>
+          {{ contentItem.header }}:<!-- <span *ngIf="!!contentItem.description">*</span> -->
         </div>
         <div class="Home-listValue" mat-line> {{ contentItem.value }}</div>
       </mat-list-item>
-      <div class="Home-description" *ngIf="open[i]">
+      <div class="Home-description" *ngIf="contentItem.description">
         <div [innerHTML]="getDescription(contentItem.description)"></div>
         <ng-container *ngIf="!!contentItem.references">
           <br/>
@@ -129,7 +129,11 @@
   </mat-list>
 </div>
 
+<!--
 <div #rationale class="Home-info">
-  <h1>Rationale</h1>
-  <p>Lorem ipsum dolor sit amet</p>
+  <h1>Additional Details</h1>
+  <p></p>
 </div>
+ -->
+
+
